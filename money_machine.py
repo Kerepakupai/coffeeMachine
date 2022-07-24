@@ -2,12 +2,7 @@ class MoneyMachine:
 
     CURRENCY = "$"
 
-    COIN_VALUES = {
-        "quarters": 0.25,
-        "dimes": 0.10,
-        "nickles": 0.05,
-        "pennies": 0.01
-    }
+    COIN_VALUES = {"quarters": 0.25, "dimes": 0.10, "nickles": 0.05, "pennies": 0.01}
 
     def __init__(self):
         self.profit = 0
@@ -21,10 +16,12 @@ class MoneyMachine:
         """Returns the total calculated from coins inserted."""
         print("Please insert coins.")
         for coin in self.COIN_VALUES:
-            self.money_received += int(input(f"How many {coin}?: ")) * self.COIN_VALUES[coin]
+            self.money_received += (
+                int(input(f"How many {coin}?: ")) * self.COIN_VALUES[coin]
+            )
         return self.money_received
 
-    def make_payment(self, cost):
+    def make_payment(self, cost: float):
         """Returns True when payment is accepted, or False if insufficient."""
         self.process_coins()
         if self.money_received >= cost:
